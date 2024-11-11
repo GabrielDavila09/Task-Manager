@@ -14,5 +14,5 @@ Este es un proyecto de administración de tareas desarrollado con Flask. Permite
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/task-manager.git
+   git clone [https://github.com/tu-usuario/task-manager.git](https://github.com/GabrielDavila09/Task-Manager.git)
    cd task-manager
