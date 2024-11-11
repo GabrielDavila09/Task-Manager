@@ -1,18 +1,10 @@
-# Task Manager
-Este es un proyecto de administración de tareas desarrollado con Flask. Permite a los usuarios crear, completar y comentar tareas.
+# Sistema de Gestión de Tareas Colaborativo
+Este es un proyecto sencillo para gestionar tareas utilizando Flask y SQLite.
 
-## Requerimientos
+## Configuración
+1. Clona el repositorio.
+2. Instala las dependencias con `pip install -r requirements.txt`.
+3. Ejecuta la aplicación con `python app.py`.
 
-- Python 3.x
-- Flask
-- Flask-SQLAlchemy
-- Flask-Login
-- Flask-Migrate
-- SQLite (base de datos por defecto)
-
-### Instalación
-
-1. Clona el repositorio:
-   ```bash
-   git clone [https://github.com/tu-usuario/task-manager.git](https://github.com/GabrielDavila09/Task-Manager.git)
-   cd task-manager
+## Pruebas
+Ejecuta las pruebas con `pytest`.

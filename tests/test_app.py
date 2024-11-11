@@ -15,7 +15,8 @@ def test_index_page(client):
     assert response.status_code == 200
 
 def test_add_task(client):
-    response = client.post('/add', data={'title': 'Test Task'})
+    response = client.post('/add', data={'title': 'Tarea'})
     assert response.status_code == 302  # Redirect to index
     task = Task.query.first()
-    assert task.title == 'Test Task'
+    assert task.title == 'Tarea'
+
