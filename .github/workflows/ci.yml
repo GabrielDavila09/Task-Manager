@@ -1,4 +1,4 @@
-name: Python application
+name: CI Pipeline
 
 on:
   push:
@@ -13,17 +13,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.10'
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Run tests
+
+    - name: Run Tests
       env:
         PYTHONPATH: .
       run: |
         pytest tests/
+
+    - name: Static Code Analysis with SonarQube
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: |
+        wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
+        unzip sonar-scanner-cli-4.6.2.2472-linux.zip
+        chmod +x sonar-scanner-4.6.2.2472-linux/bin/sonar-scanner
+        export PATH="$PATH:${{ github.workspace }}/sonar-scanner-4.6.2.2472-linux/bin"
+        
+        sonar-scanner \
+          -Dsonar.projectKey=TaskManager \
+          -Dsonar.sources=. \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
