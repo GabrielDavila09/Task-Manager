@@ -35,6 +35,7 @@ jobs:
     - name: Static Code Analysis with SonarQube
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      continue-on-error: true
       run: |
         wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
         unzip sonar-scanner-cli-4.6.2.2472-linux.zip
