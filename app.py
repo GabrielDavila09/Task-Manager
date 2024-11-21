@@ -43,6 +43,8 @@ def index():
 @app.route('/add', methods=['POST'])
 def add_task():
     task_title = request.form['title']
+    if not task_title.strip():  # Validar que no sea vacío o solo espacios
+        return "El título no puede estar vacío", 400
     new_task = Task(title=task_title)
     db.session.add(new_task)
     db.session.commit()
